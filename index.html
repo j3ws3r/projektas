@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vaikiškos kojinės</title>
+<meta name="description" content="Kaip numegzti kojines vaikams virbalais: instrukcija pagal dydį ir rekomenduojamos prekės.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf6ef;
+  --surface:#ffffff;
+  --ink:#2b2420;
+  --muted:#6f6259;
+  --line:#e8ddd0;
+  --accent:#c4552f;
+  --accent-soft:#f6e1d6;
+  --sage:#5f7a5c;
+  --sage-soft:#e3ecdf;
+  --radius:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1d1916;
+    --surface:#272220;
+    --ink:#f2ebe4;
+    --muted:#b3a69b;
+    --line:#3a332e;
+    --accent:#e6825c;
+    --accent-soft:#3d2a22;
+    --sage:#9bb897;
+    --sage-soft:#26301f;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1d1916;
+  --surface:#272220;
+  --ink:#f2ebe4;
+  --muted:#b3a69b;
+  --line:#3a332e;
+  --accent:#e6825c;
+  --accent-soft:#3d2a22;
+  --sage:#9bb897;
+  --sage-soft:#26301f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Nunito Sans",system-ui,sans-serif;
+  font-size:17px;
+  line-height:1.65;
+}
+a{color:var(--accent)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header.top{
+  border-bottom:1px solid var(--line);
+  background:var(--surface);
+  position:sticky;top:0;z-index:10;
+}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
+.brand{font-family:Fraunces,serif;font-weight:700;font-size:20px;text-decoration:none;color:var(--ink)}
+.brand span{color:var(--accent)}
+nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:15px;margin-left:20px}
+nav a:hover{color:var(--accent)}
+.hero{padding:64px 0 40px}
+.hero h1{
+  font-family:Fraunces,serif;font-weight:700;
+  font-size:clamp(34px,6vw,56px);line-height:1.08;margin:0 0 18px;max-width:14ch;
+}
+.hero p{font-size:19px;color:var(--muted);max-width:56ch;margin:0 0 28px}
+.facts{display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:0;list-style:none}
+.facts li{
+  background:var(--sage-soft);color:var(--sage);font-weight:700;font-size:14px;
+  padding:6px 14px;border-radius:999px;
+}
+.stripe{
+  height:14px;margin:8px 0 0;
+  background:repeating-linear-gradient(135deg,var(--accent) 0 10px,transparent 10px 20px);
+  opacity:.35;
+}
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+h2{font-family:Fraunces,serif;font-size:clamp(26px,4vw,36px);margin:0 0 10px;line-height:1.2}
+.lead{color:var(--muted);margin:0 0 28px;max-width:62ch}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;
+}
+.card h3{margin:0 0 8px;font-size:18px}
+.card p{margin:0;color:var(--muted)}
+.card ul{margin:8px 0 0;padding-left:20px}
+.sizebar{
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px 16px;margin-bottom:24px;position:sticky;top:72px;z-index:5;
+}
+.sizebar strong{margin-right:6px}
+.sizebar button{
+  font:inherit;font-weight:700;font-size:15px;cursor:pointer;
+  border:1px solid var(--line);background:transparent;color:var(--ink);
+  padding:7px 14px;border-radius:999px;
+}
+.sizebar button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.v{
+  font-weight:700;color:var(--accent);background:var(--accent-soft);
+  padding:0 6px;border-radius:6px;white-space:nowrap;
+}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
+th{font-weight:700;color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.04em}
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0}
+ol.steps>li{
+  counter-increment:s;position:relative;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 22px 22px 76px;margin-bottom:14px;
+}
+ol.steps>li::before{
+  content:counter(s);position:absolute;left:22px;top:20px;
+  width:36px;height:36px;border-radius:50%;
+  background:var(--accent);color:#fff;font-weight:700;
+  display:grid;place-items:center;font-family:Fraunces,serif;
+}
+ol.steps h3{margin:0 0 6px;font-size:19px}
+ol.steps p{margin:0 0 8px}
+ol.steps p:last-child{margin-bottom:0}
+.row{
+  display:block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;
+  background:var(--bg);border-left:3px solid var(--sage);padding:8px 12px;margin:6px 0;border-radius:0 8px 8px 0;
+}
+.tip{
+  background:var(--sage-soft);border-radius:var(--radius);padding:16px 20px;margin-top:20px;
+}
+.tip strong{color:var(--sage)}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.product{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px;display:flex;flex-direction:column;gap:8px;
+}
+.product .tag{
+  align-self:flex-start;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--sage);background:var(--sage-soft);padding:3px 10px;border-radius:999px;
+}
+.product .tag.must{color:var(--accent);background:var(--accent-soft)}
+.product h3{margin:4px 0 0;font-size:18px}
+.product p{margin:0;color:var(--muted);font-size:15px}
+.product .spec{margin-top:auto;padding-top:10px;border-top:1px dashed var(--line);font-size:14px;font-weight:600}
+.kit{
+  margin-top:28px;background:var(--ink);color:var(--bg);border-radius:var(--radius);
+  padding:28px;display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center;
+}
+.kit h3{font-family:Fraunces,serif;font-size:26px;margin:0 0 8px}
+.kit p{margin:0;opacity:.8}
+.kit ul{margin:0;padding-left:20px}
+footer{padding:36px 0 48px;color:var(--muted);font-size:14px}
+@media (max-width:820px){
+  .grid2,.kit{grid-template-columns:1fr}
+  .products{grid-template-columns:1fr 1fr}
+  nav{display:none}
+}
+@media (max-width:540px){
+  .products{grid-template-columns:1fr}
+  ol.steps>li{padding:64px 18px 18px}
+  ol.steps>li::before{left:18px;top:18px}
+  .sizebar{top:68px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">Mažos <span>kojinės</span></a>
+    <nav>
+      <a href="#pasiruosimas">Pasiruošimas</a>
+      <a href="#instrukcija">Instrukcija</a>
+      <a href="#prekes">Prekės</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <h1>Šiltos kojinės vaikui savo rankomis</h1>
+    <p>Klasikinės kojinės, megztos ratu nuo riešo iki pirštų ant penkių virbalų. Pasirinkite vaiko dydį ir visi akių skaičiai instrukcijoje persiskaičiuos automatiškai.</p>
+    <ul class="facts">
+      <li>Lygis: pradedančiajam su patirtimi</li>
+      <li>Virbalai 2,5 mm</li>
+      <li>Kojinių siūlai 4 klostių</li>
+      <li>Trys dydžiai: 1–10 metų</li>
+    </ul>
+  </div>
+  <div class="stripe"></div>
+
+  <section id="pasiruosimas">
+    <div class="wrap">
+      <h2>Pasiruošimas</h2>
+      <p class="lead">Prieš pradėdami išsirinkite dydį pagal vaiko pėdos ilgį. Jį išmatuokite nuo kulno iki ilgiausio piršto galo, vaikui stovint.</p>
+
+      <div class="tablebox">
+        <table>
+          <thead>
+            <tr><th>Dydis</th><th>Amžius</th><th>Pėdos ilgis</th><th>Akių</th><th>Siūlų kiekis</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>S</td><td>1–3 m.</td><td>12–14 cm</td><td>40</td><td>apie 40 g</td></tr>
+            <tr><td>M</td><td>4–6 m.</td><td>15–17 cm</td><td>44</td><td>apie 50 g</td></tr>
+            <tr><td>L</td><td>7–10 m.</td><td>18–20 cm</td><td>48</td><td>60–70 g</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid2" style="margin-top:20px">
+        <div class="card">
+          <h3>Mezgimo tankis</h3>
+          <p>30 akių ir 42 eilės = 10 × 10 cm lygiuoju mezgimu. Numegzkite bandomąjį gabalėlį: jei akių daugiau, imkite storesnius virbalus, jei mažiau, plonesnius.</p>
+        </div>
+        <div class="card">
+          <h3>Sutrumpinimai</h3>
+          <ul>
+            <li><b>A</b> veidinė akis, <b>I</b> išvirkščioji akis</li>
+            <li><b>N1</b> nukelti akį nenumegztą</li>
+            <li><b>2A kartu</b> dvi akis numegzti kartu veidinėmis (sumažėja į dešinę)</li>
+            <li><b>SSK</b> dvi akis po vieną nukelti, grąžinti ir numegzti kartu per užpakalines sieneles (sumažėja į kairę)</li>
+            <li><b>2I kartu</b> dvi akis numegzti kartu išvirkščiomis</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="instrukcija">
+    <div class="wrap">
+      <h2>Mezgimo instrukcija</h2>
+      <p class="lead">Akys paskirstomos ant keturių virbalų, penktuoju mezgama. Ratas prasideda nugarinėje kojinės pusėje, ties kulno viduriu.</p>
+
+      <div class="sizebar" role="group" aria-label="Dydis">
+        <strong>Dydis:</strong>
+        <button type="button" data-size="S" aria-pressed="false">S · 1–3 m.</button>
+        <button type="button" data-size="M" aria-pressed="true">M · 4–6 m.</button>
+        <button type="button" data-size="L" aria-pressed="false">L · 7–10 m.</button>
+      </div>
+
+      <ol class="steps">
+        <li>
+          <h3>Užmeskite akis</h3>
+          <p>Užmeskite <span class="v" data-k="cast"></span> akis elastingu būdu, pavyzdžiui, ilgąja uodega. Paskirstykite po <span class="v" data-k="perNeedle"></span> akis ant keturių virbalų ir sujunkite į ratą, saugodami, kad akys nepersisuktų.</p>
+        </li>
+        <li>
+          <h3>Riešas</h3>
+          <p>Mezkite guma 1 A, 1 I ratu <span class="v" data-k="cuff"></span>. Taip kojinė laikysis ant kojos ir nenusmuks.</p>
+        </li>
+        <li>
+          <h3>Blauzda</h3>
+          <p>Pereikite prie lygiojo mezgimo (visos akys veidinės) ir mezkite <span class="v" data-k="leg"></span>. Ilgį galite keisti pagal norą.</p>
+        </li>
+        <li>
+          <h3>Kulno sienelė</h3>
+          <p>Toliau mezgama tik ant pusės akių: sujunkite 1 ir 4 virbalų akis, iš viso <span class="v" data-k="heel"></span>. Likusios akys laukia ant 2 ir 3 virbalų. Mezkite pirmyn ir atgal:</p>
+          <span class="row">1 eilė (veidas): *N1, 1A* kartokite iki galo</span>
+          <span class="row">2 eilė (išvirkščia): N1, toliau visos I</span>
+          <p>Kartokite šias dvi eiles, kol bus iš viso <span class="v" data-k="flapRows"></span> eilių. Baikite išvirkščia eile.</p>
+        </li>
+        <li>
+          <h3>Kulno apsukimas</h3>
+          <span class="row">1 eilė: N1, <span data-k="turnK"></span> A, SSK, 1A, apsukite darbą</span>
+          <span class="row">2 eilė: N1, 5 I, 2I kartu, 1 I, apsukite</span>
+          <span class="row">3 eilė: N1, A iki 1 akies prieš tarpelį, SSK, 1A, apsukite</span>
+          <span class="row">4 eilė: N1, I iki 1 akies prieš tarpelį, 2I kartu, 1 I, apsukite</span>
+          <p>Kartokite 3 ir 4 eiles, kol išnaudosite visas šonines akis. Jei po paskutinio sumažinimo nebelieka akies, 1A arba 1 I praleiskite. Ant virbalo liks <span class="v" data-k="heelLeft"></span> akių.</p>
+        </li>
+        <li>
+          <h3>Pleištas</h3>
+          <p>Numegzkite pusę kulno akių, tai bus naujasis rato pradžios taškas. Toliau tuo pačiu 1 virbalu numegzkite likusias kulno akis ir išilgai kulno sienelės krašto pakelkite <span class="v" data-k="pickup"></span> akių. Viršutines akis (2 ir 3 virbalai) numegzkite veidinėmis. 4 virbalu pakelkite <span class="v" data-k="pickup"></span> akių kitame krašte ir numegzkite pusę kulno akių. Dabar turite <span class="v" data-k="gusset"></span> akių.</p>
+          <span class="row">Mažinimo ratas: 1 virbalas A iki 3 paskutinių, 2A kartu, 1A · 2 ir 3 virbalai A · 4 virbalas 1A, SSK, A iki galo</span>
+          <span class="row">Kitas ratas: visos A</span>
+          <p>Kartokite šiuos du ratus, kol vėl liks <span class="v" data-k="cast"></span> akys.</p>
+        </li>
+        <li>
+          <h3>Pėda</h3>
+          <p>Mezkite lygiuoju mezgimu, kol pėdos ilgis nuo kulno galo bus <span class="v" data-k="footBefore"></span> trumpesnis už reikiamą pėdos ilgį. Šis likutis skirtas pirštams.</p>
+        </li>
+        <li>
+          <h3>Pirštų dalis</h3>
+          <span class="row">Mažinimo ratas: 1 virbalas A iki 3 paskutinių, 2A kartu, 1A · 2 virbalas 1A, SSK, A iki galo · 3 virbalas A iki 3 paskutinių, 2A kartu, 1A · 4 virbalas 1A, SSK, A iki galo</span>
+          <p>Kaitaliokite mažinimo ratą su ratu be mažinimo, kol liks <span class="v" data-k="toeHalf"></span> akių. Tada mažinkite kiekviename rate, kol liks 12 akių.</p>
+        </li>
+        <li>
+          <h3>Užbaigimas</h3>
+          <p>Perkelkite pado akis ant vieno virbalo, viršaus akis ant kito (po 6). Nukirpkite siūlą palikę 30 cm galą ir sujunkite akis megztine siūle (Kitchener būdu). Įsiūkite siūlų galus ir numegzkite antrą kojinę.</p>
+        </li>
+      </ol>
+
+      <div class="tip">
+        <strong>Patarimas.</strong> Vaikų kojinės greitai dyla ties kulnu, todėl kulno sienelė megzta raštu „N1, 1A“: jis storesnis ir tvirtesnis. Pasirinkite siūlus su poliamido priedu, jie atlaikys skalbimą ir lakstymą.
+      </div>
+    </div>
+  </section>
+
+  <section id="prekes">
+    <div class="wrap">
+      <h2>Rekomenduojamos prekės</h2>
+      <p class="lead">Viskas, ko reikia pirmai porai. Pažymėtos būtinos prekės, kitos palengvina darbą.</p>
+
+      <div class="products">
+        <article class="product">
+          <span class="tag must">Būtina</span>
+          <h3>Kojinių siūlai</h3>
+          <p>75 % merino vilna ir 25 % poliamidas. Minkšti, šilti ir atsparūs dilimui. Vaikams tinka plaunami skalbimo mašinoje.</p>
+          <div class="spec">4 klostės · 50 g ≈ 210 m</div>
+        </article>
+        <article class="product">
+          <span class="tag must">Būtina</span>
+          <h3>Kojinių virbalai</h3>
+          <p>Penkių virbalų rinkinys mezgimui ratu. Trumpi virbalai patogesni mažoms kojinėms.</p>
+          <div class="spec">2,5 mm · 15 cm ilgio</div>
+        </article>
+        <article class="product">
+          <span class="tag must">Būtina</span>
+          <h3>Buka adata siūlams</h3>
+          <p>Galams įsiūti ir pirštų daliai sujungti. Bukas galas neperskelia siūlo.</p>
+          <div class="spec">Didelė akutė</div>
+        </article>
+        <article class="product">
+          <span class="tag">Patogu</span>
+          <h3>Žiediniai virbalai</h3>
+          <p>Alternatyva kojinių virbalams: abi kojinės ar viena kojinė mezgama „magic loop“ būdu.</p>
+          <div class="spec">2,5 mm · 80 cm lynas</div>
+        </article>
+        <article class="product">
+          <span class="tag">Patogu</span>
+          <h3>Akių žymekliai</h3>
+          <p>Pažymi rato pradžią ir mažinimo vietas, kad nereikėtų skaičiuoti iš naujo.</p>
+          <div class="spec">Atsegami, 10 vnt.</div>
+        </article>
+        <article class="product">
+          <span class="tag">Patogu</span>
+          <h3>Eilių skaitiklis</h3>
+          <p>Padeda suskaičiuoti kulno sienelės eiles ir numegzti abi kojines vienodas.</p>
+          <div class="spec">Užmaunamas ant virbalo</div>
+        </article>
+        <article class="product">
+          <span class="tag">Patogu</span>
+          <h3>Matavimo juostelė</h3>
+          <p>Pėdos ilgiui ir mezgimo tankiui pamatuoti.</p>
+          <div class="spec">150 cm, minkšta</div>
+        </article>
+        <article class="product">
+          <span class="tag">Patogu</span>
+          <h3>Kojinių formos</h3>
+          <p>Išskalbtos kojinės ant jų išdžiūsta lygios ir gražios formos.</p>
+          <div class="spec">Vaikiški dydžiai</div>
+        </article>
+        <article class="product">
+          <span class="tag">Patogu</span>
+          <h3>Projektų krepšelis</h3>
+          <p>Kad kamuolys neriedėtų po stalu ir virbalai nepasimestų.</p>
+          <div class="spec">Su kišenėle virbalams</div>
+        </article>
+      </div>
+
+      <div class="kit">
+        <div>
+          <h3>Pradedančiojo rinkinys</h3>
+          <p>Viskas vienai porai M dydžio kojinių vienoje dėžutėje.</p>
+        </div>
+        <ul>
+          <li>1 sruoga kojinių siūlų (50 g)</li>
+          <li>Kojinių virbalai 2,5 mm</li>
+          <li>Buka adata ir 4 žymekliai</li>
+          <li>Atspausdinta šio puslapio instrukcija</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Puslapis sukurtas su Claude.</div>
+</footer>
+
+<script>
+(function(){
+  var sizes = {
+    S:{cast:40,perNeedle:10,cuff:"2,5 cm",leg:"5 cm",heel:20,flapRows:18,turnK:11,heelLeft:12,pickup:10,gusset:52,footBefore:"3 cm",toeHalf:20},
+    M:{cast:44,perNeedle:11,cuff:"3 cm",leg:"6 cm",heel:22,flapRows:20,turnK:12,heelLeft:14,pickup:11,gusset:58,footBefore:"3,5 cm",toeHalf:24},
+    L:{cast:48,perNeedle:12,cuff:"3 cm",leg:"7 cm",heel:24,flapRows:22,turnK:13,heelLeft:14,pickup:12,gusset:62,footBefore:"4 cm",toeHalf:24}
+  };
+  var buttons = document.querySelectorAll(".sizebar button");
+  function apply(size){
+    var d = sizes[size];
+    document.querySelectorAll("[data-k]").forEach(function(el){
+      el.textContent = d[el.getAttribute("data-k")];
+    });
+    buttons.forEach(function(b){
+      b.setAttribute("aria-pressed", b.getAttribute("data-size") === size ? "true" : "false");
+    });
+    try { localStorage.setItem("kojiniu-dydis", size); } catch(e) {}
+  }
+  buttons.forEach(function(b){
+    b.addEventListener("click", function(){ apply(b.getAttribute("data-size")); });
+  });
+  var saved = "M";
+  try { saved = localStorage.getItem("kojiniu-dydis") || "M"; } catch(e) {}
+  apply(sizes[saved] ? saved : "M");
+})();
+</script>
+</body>
+</html>
