@@ -170,67 +170,56 @@ footer{padding:36px 0 48px;color:var(--muted);font-size:14px}
   ol.steps>li::before{left:18px;top:18px}
   .sizebar{top:68px}
 }
+.product .spec{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.price{color:var(--accent);font-weight:700;white-space:nowrap}
+.buy{font-weight:700;font-size:14px;text-decoration:none}
+.buy:hover{text-decoration:underline}
+.preview-banner{background:var(--accent);color:#fff;text-align:center;font-weight:700;font-size:14px;padding:8px 16px}
 </style>
 </head>
 <body>
 
+<div class="preview-banner" id="previewBanner" hidden>Juodraščio peržiūra. Lankytojai šių pakeitimų dar nemato.</div>
+
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#">Mažos <span>kojinės</span></a>
+    <a class="brand" href="#" id="brand"></a>
     <nav>
-      <a href="#pasiruosimas">Pasiruošimas</a>
-      <a href="#instrukcija">Instrukcija</a>
-      <a href="#prekes">Prekės</a>
+      <a href="#pasiruosimas" id="navPrep"></a>
+      <a href="#instrukcija" id="navInstr"></a>
+      <a href="#prekes" id="navProducts"></a>
     </nav>
   </div>
 </header>
 
 <main>
   <div class="wrap hero">
-    <h1>Šiltos kojinės vaikui, nertos vąšeliu</h1>
-    <p>Kojinės neriamos ratu nuo pirštų galo iki riešo trumpaisiais stulpeliais, o kulnas įneriamas pabaigoje. Pasirinkite vaiko dydį ir visi akių skaičiai instrukcijoje persiskaičiuos automatiškai.</p>
-    <ul class="facts">
-      <li>Lygis: pradedančiajam</li>
-      <li>Vąšelis 3 mm</li>
-      <li>Kojinių siūlai 4 klostių</li>
-      <li>Trys dydžiai: 1–10 metų</li>
-    </ul>
+    <h1 id="heroTitle"></h1>
+    <p id="heroText"></p>
+    <ul class="facts" id="facts"></ul>
   </div>
   <div class="stripe"></div>
 
   <section id="pasiruosimas">
     <div class="wrap">
-      <h2>Pasiruošimas</h2>
-      <p class="lead">Prieš pradėdami išsirinkite dydį pagal vaiko pėdos ilgį. Jį išmatuokite nuo kulno iki ilgiausio piršto galo, vaikui stovint.</p>
-
+      <h2 id="prepTitle"></h2>
+      <p class="lead" id="prepLead"></p>
       <div class="tablebox">
         <table>
           <thead>
-            <tr><th>Dydis</th><th>Amžius</th><th>Pėdos ilgis</th><th>Akių rate</th><th>Siūlų kiekis</th></tr>
+            <tr><th>Dydis</th><th>Amžius</th><th>Pėdos ilgis</th><th id="sizeVarHead">Akių rate</th><th>Siūlų kiekis</th></tr>
           </thead>
-          <tbody>
-            <tr><td>S</td><td>1–3 m.</td><td>12–14 cm</td><td>30</td><td>apie 50 g</td></tr>
-            <tr><td>M</td><td>4–6 m.</td><td>15–17 cm</td><td>36</td><td>60–70 g</td></tr>
-            <tr><td>L</td><td>7–10 m.</td><td>18–20 cm</td><td>42</td><td>80–100 g</td></tr>
-          </tbody>
+          <tbody id="sizeTable"></tbody>
         </table>
       </div>
-
       <div class="grid2" style="margin-top:20px">
         <div class="card">
-          <h3>Nėrimo tankis</h3>
-          <p>Apie 25 trumpieji stulpeliai ir 28 eilės = 10 × 10 cm. Nunerkite bandomąjį gabalėlį: jei akių daugiau, imkite storesnį vąšelį, jei mažiau, plonesnį. Kojinė turi tempiantis gerai priglusti prie kojos.</p>
+          <h3 id="gaugeTitle"></h3>
+          <p id="gaugeText"></p>
         </div>
         <div class="card">
-          <h3>Sutrumpinimai</h3>
-          <ul>
-            <li><b>oa</b> oro akis, <b>ja</b> jungiamoji akis</li>
-            <li><b>sb</b> stulpelis be apnėrimo (trumpasis stulpelis)</li>
-            <li><b>ssa</b> stulpelis su apnėrimu</li>
-            <li><b>2sb į vieną</b> du stulpeliai į tą pačią akį (pridėjimas)</li>
-            <li><b>2sb kartu</b> du stulpeliai sujungti į vieną (sumažinimas)</li>
-            <li><b>rsp / rsu</b> reljefinis stulpelis iš priekio / iš užpakalio</li>
-          </ul>
+          <h3 id="abbrTitle"></h3>
+          <ul id="abbreviations"></ul>
         </div>
       </div>
     </div>
@@ -238,169 +227,164 @@ footer{padding:36px 0 48px;color:var(--muted);font-size:14px}
 
   <section id="instrukcija">
     <div class="wrap">
-      <h2>Nėrimo instrukcija</h2>
-      <p class="lead">Pėda ir blauzda neriamos spirale, nejungiant ratų. Rato pradžią pažymėkite žymekliu ir kiekviename rate jį perkelkite aukštyn.</p>
-
-      <div class="sizebar" role="group" aria-label="Dydis">
-        <strong>Dydis:</strong>
-        <button type="button" data-size="S" aria-pressed="false">S · 1–3 m.</button>
-        <button type="button" data-size="M" aria-pressed="true">M · 4–6 m.</button>
-        <button type="button" data-size="L" aria-pressed="false">L · 7–10 m.</button>
-      </div>
-
-      <ol class="steps">
-        <li>
-          <h3>Pirštų dalis</h3>
-          <span class="row">1 ratas: į magišką žiedą nunerkite 6 sb, žiedą sutraukite (6)</span>
-          <span class="row">2 ratas: 2sb į vieną kiekvieną akį (12)</span>
-          <span class="row">3 ratas: *1 sb, 2sb į vieną* kartokite (18)</span>
-          <span class="row">4 ratas: *2 sb, 2sb į vieną* kartokite (24)</span>
-          <p>Toliau kiekviename rate tarp pridėjimų nerkite vienu sb daugiau, kol rate bus <span class="v" data-k="n"></span> akių. Tam reikės <span class="v" data-k="toeRounds"></span> ratų.</p>
-        </li>
-        <li>
-          <h3>Pėda</h3>
-          <p>Nerkite po 1 sb į kiekvieną akį, kol kojinės ilgis nuo pirštų galo bus <span class="v" data-k="heelSpace"></span> trumpesnis už vaiko pėdos ilgį. Likutis skirtas kulnui.</p>
-        </li>
-        <li>
-          <h3>Anga kulnui</h3>
-          <p>Nunerkite <span class="v" data-k="half"></span> sb (tai pėdos viršus). Tada nunerkite <span class="v" data-k="half"></span> oa, praleiskite <span class="v" data-k="half"></span> akis ir tęskite ratą.</p>
-          <p>Kitame rate į kiekvieną oro akį nunerkite po 1 sb. Rate vėl bus <span class="v" data-k="n"></span> akių.</p>
-        </li>
-        <li>
-          <h3>Blauzda</h3>
-          <p>Nerkite sb spirale <span class="v" data-k="leg"></span>. Ilgį galite keisti pagal norą.</p>
-        </li>
-        <li>
-          <h3>Riešas</h3>
-          <p>Toliau ratus jungsite ja. Pirmas rato stulpelis keičiamas 2 oa.</p>
-          <span class="row">1 ratas: 2 oa, ssa į kiekvieną akį, ja į rato pradžią</span>
-          <span class="row">Kiti ratai: 2 oa, *1 rsp, 1 rsu* kartokite, ja</span>
-          <p>Nunerkite <span class="v" data-k="cuff"></span> reljefinių ratų. Taip gausite elastingą gumą, kuri laikys kojinę ant kojos. Siūlą nukirpkite ir įsiūkite.</p>
-        </li>
-        <li>
-          <h3>Kulnas</h3>
-          <p>Prisekite siūlą angos kampe ir nerkite sb ratu aplink visą angą: po 1 sb į kiekvieną akį ir po 1 sb į kiekvieną kampą. Antrame rate kampuose nunerkite 2sb kartu, kad rate vėl būtų <span class="v" data-k="n"></span> akių.</p>
-          <span class="row">Mažinimo ratai: *<span data-k="decStart"></span> sb, 2sb kartu* kartokite, kitame rate tarp sumažinimų nerkite vienu sb mažiau</span>
-          <p>Mažinkite, kol liks 12 akių.</p>
-        </li>
-        <li>
-          <h3>Užbaigimas</h3>
-          <p>Nukirpkite siūlą palikę 20 cm galą. Įverkite jį į buką adatą, perverkite per visas 12 likusių akių priekines kilpas ir sutraukite. Kulno kampuose likusias skylutes užsiūkite tuo pačiu siūlu. Įsiūkite galus ir nunerkite antrą kojinę.</p>
-        </li>
-      </ol>
-
-      <div class="tip">
-        <strong>Patarimas.</strong> Sb audinys tankus ir tvirtas, todėl vąšeliu nertos kojinės ilgai nesidėvi. Jas patogiausia nešioti namuose ar batuose su laisvesne nosimi. Pasirinkite siūlus su poliamido priedu, jie atlaikys skalbimą ir lakstymą.
-      </div>
+      <h2 id="instrTitle"></h2>
+      <p class="lead" id="instrLead"></p>
+      <div class="sizebar" role="group" aria-label="Dydis" id="sizebar"><strong>Dydis:</strong></div>
+      <ol class="steps" id="steps"></ol>
+      <div class="tip"><strong id="tipTitle"></strong> <span id="tipText"></span></div>
     </div>
   </section>
 
   <section id="prekes">
     <div class="wrap">
-      <h2>Rekomenduojamos prekės</h2>
-      <p class="lead">Viskas, ko reikia pirmai porai. Pažymėtos būtinos prekės, kitos palengvina darbą.</p>
-
-      <div class="products">
-        <article class="product">
-          <span class="tag must">Būtina</span>
-          <h3>Kojinių siūlai</h3>
-          <p>75 % merino vilna ir 25 % poliamidas. Minkšti, šilti ir atsparūs dilimui. Vaikams tinka plaunami skalbimo mašinoje.</p>
-          <div class="spec">4 klostės · 50 g ≈ 210 m</div>
-        </article>
-        <article class="product">
-          <span class="tag must">Būtina</span>
-          <h3>Nėrimo vąšelis</h3>
-          <p>Su minkšta ergonomine rankena: ilgiau neriant nepavargsta ranka. Metalinė galvutė lengvai slysta per vilną.</p>
-          <div class="spec">3 mm</div>
-        </article>
-        <article class="product">
-          <span class="tag must">Būtina</span>
-          <h3>Akių žymekliai</h3>
-          <p>Neriant spirale be jų sunku rasti rato pradžią. Atsegami žymekliai lengvai perkeliami aukštyn.</p>
-          <div class="spec">Atsegami, 10 vnt.</div>
-        </article>
-        <article class="product">
-          <span class="tag must">Būtina</span>
-          <h3>Buka adata siūlams</h3>
-          <p>Kojinės galui sutraukti ir siūlų galams įsiūti. Bukas galas neperskelia siūlo.</p>
-          <div class="spec">Didelė akutė</div>
-        </article>
-        <article class="product">
-          <span class="tag">Patogu</span>
-          <h3>Vąšelių rinkinys</h3>
-          <p>Praverčia, kai reikia pakoreguoti tankį ar nerti storesniais siūlais.</p>
-          <div class="spec">2,5–4 mm</div>
-        </article>
-        <article class="product">
-          <span class="tag">Patogu</span>
-          <h3>Eilių skaitiklis</h3>
-          <p>Padeda suskaičiuoti pirštų ir kulno ratus, kad abi kojinės būtų vienodos.</p>
-          <div class="spec">Su spaudžiamu mygtuku</div>
-        </article>
-        <article class="product">
-          <span class="tag">Patogu</span>
-          <h3>Matavimo juostelė</h3>
-          <p>Pėdos ilgiui ir nėrimo tankiui pamatuoti.</p>
-          <div class="spec">150 cm, minkšta</div>
-        </article>
-        <article class="product">
-          <span class="tag">Patogu</span>
-          <h3>Kojinių formos</h3>
-          <p>Išskalbtos kojinės ant jų išdžiūsta lygios ir gražios formos.</p>
-          <div class="spec">Vaikiški dydžiai</div>
-        </article>
-        <article class="product">
-          <span class="tag">Patogu</span>
-          <h3>Projektų krepšelis</h3>
-          <p>Kad kamuolys neriedėtų po stalu ir vąšelis nepasimestų.</p>
-          <div class="spec">Su kišenėle įrankiams</div>
-        </article>
-      </div>
-
+      <h2 id="productsTitle"></h2>
+      <p class="lead" id="productsLead"></p>
+      <div class="products" id="products"></div>
       <div class="kit">
         <div>
-          <h3>Pradedančiojo rinkinys</h3>
-          <p>Viskas vienai porai M dydžio kojinių vienoje dėžutėje.</p>
+          <h3 id="kitTitle"></h3>
+          <p id="kitText"></p>
         </div>
-        <ul>
-          <li>2 sruogos kojinių siūlų (po 50 g)</li>
-          <li>Vąšelis 3 mm su ergonomine rankena</li>
-          <li>Buka adata ir 4 žymekliai</li>
-          <li>Atspausdinta šio puslapio instrukcija</li>
-        </ul>
+        <ul id="kitItems"></ul>
       </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap">Puslapis sukurtas su Claude.</div>
+  <div class="wrap" id="footer"></div>
 </footer>
 
+<script src="content.js"></script>
 <script>
 (function(){
-  var sizes = {
-    S:{n:30,toeRounds:5,heelSpace:"4 cm",half:15,leg:"4 cm",cuff:4,decStart:3},
-    M:{n:36,toeRounds:6,heelSpace:"4,5 cm",half:18,leg:"5 cm",cuff:5,decStart:4},
-    L:{n:42,toeRounds:7,heelSpace:"5 cm",half:21,leg:"6 cm",cuff:6,decStart:5}
-  };
-  var buttons = document.querySelectorAll(".sizebar button");
-  function apply(size){
-    var d = sizes[size];
-    document.querySelectorAll("[data-k]").forEach(function(el){
-      el.textContent = d[el.getAttribute("data-k")];
-    });
-    buttons.forEach(function(b){
-      b.setAttribute("aria-pressed", b.getAttribute("data-size") === size ? "true" : "false");
-    });
-    try { localStorage.setItem("kojiniu-dydis", size); } catch(e) {}
+  var data = window.SITE_CONTENT;
+  var params = new URLSearchParams(location.search);
+  if (params.has("perziura")) {
+    try {
+      var draft = localStorage.getItem("kojiniu-juodrastis");
+      if (draft) {
+        data = JSON.parse(draft);
+        document.getElementById("previewBanner").hidden = false;
+      }
+    } catch(e) {}
   }
-  buttons.forEach(function(b){
-    b.addEventListener("click", function(){ apply(b.getAttribute("data-size")); });
+  if (!data) {
+    document.querySelector("main").innerHTML = '<div class="wrap hero"><p>Nepavyko įkelti turinio.</p></div>';
+    return;
+  }
+
+  function $(id){ return document.getElementById(id); }
+  function esc(s){
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c];
+    });
+  }
+  function text(id, value){ $(id).textContent = value || ""; }
+  function safeUrl(u){
+    u = String(u || "").trim();
+    return /^https?:\/\//i.test(u) ? u : "";
+  }
+
+  var site = data.site || {};
+  document.title = site.pageTitle || document.title;
+  $("brand").innerHTML = esc(site.brand) + " <span>" + esc(site.brandAccent) + "</span>";
+  text("heroTitle", site.heroTitle);
+  text("heroText", site.heroText);
+  $("facts").innerHTML = (site.facts || []).map(function(f){ return "<li>" + esc(f) + "</li>"; }).join("");
+  text("footer", site.footer);
+
+  var prep = data.prep || {};
+  text("prepTitle", prep.title);
+  text("navPrep", prep.title);
+  text("prepLead", prep.lead);
+  text("gaugeTitle", prep.gaugeTitle);
+  text("gaugeText", prep.gaugeText);
+  text("abbrTitle", prep.abbrTitle);
+  $("abbreviations").innerHTML = (prep.abbreviations || []).map(function(a){
+    return "<li><b>" + esc(a.term) + "</b> " + esc(a.text) + "</li>";
+  }).join("");
+
+  var sizes = data.sizes || [];
+  var variables = data.variables || [];
+  function varValue(key, sizeId){
+    for (var i = 0; i < variables.length; i++) {
+      if (variables[i].key === key) return (variables[i].values || {})[sizeId];
+    }
+    return undefined;
+  }
+  var nVar = variables.filter(function(v){ return v.key === "n"; })[0];
+  if (nVar && nVar.label) text("sizeVarHead", nVar.label);
+  $("sizeTable").innerHTML = sizes.map(function(s){
+    var n = varValue("n", s.id);
+    return "<tr><td>" + esc(s.id) + "</td><td>" + esc(s.age) + "</td><td>" + esc(s.foot) + "</td><td>" + esc(n == null ? "" : n) + "</td><td>" + esc(s.yarn) + "</td></tr>";
+  }).join("");
+
+  var instr = data.instructions || {};
+  text("instrTitle", instr.title);
+  text("navInstr", instr.title);
+  text("instrLead", instr.lead);
+  text("tipTitle", instr.tipTitle);
+  text("tipText", instr.tipText);
+
+  function fill(t, sizeId){
+    return esc(t).replace(/\{(\w+)\}/g, function(m, key){
+      var v = varValue(key, sizeId);
+      return v == null || v === "" ? m : '<span class="v">' + esc(v) + "</span>";
+    });
+  }
+  function renderSteps(sizeId){
+    $("steps").innerHTML = (instr.steps || []).map(function(step){
+      var body = (step.blocks || []).map(function(b){
+        return b.type === "row"
+          ? '<span class="row">' + fill(b.text, sizeId) + "</span>"
+          : "<p>" + fill(b.text, sizeId) + "</p>";
+      }).join("");
+      return "<li><h3>" + esc(step.title) + "</h3>" + body + "</li>";
+    }).join("");
+  }
+
+  var bar = $("sizebar");
+  sizes.forEach(function(s){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("data-size", s.id);
+    b.textContent = s.id + (s.age ? " · " + s.age : "");
+    b.addEventListener("click", function(){ applySize(s.id); });
+    bar.appendChild(b);
   });
-  var saved = "M";
-  try { saved = localStorage.getItem("kojiniu-dydis") || "M"; } catch(e) {}
-  apply(sizes[saved] ? saved : "M");
+  function applySize(id){
+    renderSteps(id);
+    bar.querySelectorAll("button").forEach(function(b){
+      b.setAttribute("aria-pressed", b.getAttribute("data-size") === id ? "true" : "false");
+    });
+    try { localStorage.setItem("kojiniu-dydis", id); } catch(e) {}
+  }
+  var ids = sizes.map(function(s){ return s.id; });
+  var start = data.defaultSize;
+  try { start = localStorage.getItem("kojiniu-dydis") || start; } catch(e) {}
+  if (ids.indexOf(start) < 0) start = ids.indexOf(data.defaultSize) >= 0 ? data.defaultSize : ids[0];
+  if (start) applySize(start); else renderSteps("");
+
+  var ps = data.productsSection || {};
+  text("productsTitle", ps.title);
+  text("navProducts", ps.title);
+  text("productsLead", ps.lead);
+  $("products").innerHTML = (data.products || []).map(function(p){
+    var must = p.tag === "must";
+    var url = safeUrl(p.url);
+    var footer = '<div class="spec">' + esc(p.spec);
+    if (p.price) footer += '<span class="price">' + esc(p.price) + "</span>";
+    footer += "</div>";
+    var link = url ? '<a class="buy" href="' + esc(url) + '" target="_blank" rel="noopener">Žiūrėti prekę</a>' : "";
+    return '<article class="product"><span class="tag' + (must ? " must" : "") + '">' + (must ? "Būtina" : "Patogu") + "</span>" +
+      "<h3>" + esc(p.name) + "</h3><p>" + esc(p.description) + "</p>" + footer + link + "</article>";
+  }).join("");
+
+  var kit = data.kit || {};
+  text("kitTitle", kit.title);
+  text("kitText", kit.text);
+  $("kitItems").innerHTML = (kit.items || []).map(function(i){ return "<li>" + esc(i) + "</li>"; }).join("");
 })();
 </script>
 </body>
