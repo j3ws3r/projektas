@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="lt">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Turinio valdymas</title>
+<title>Content Manager</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -121,24 +121,24 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
 
 <div class="topbar">
   <div class="in">
-    <h1>Turinio valdymas</h1>
-    <span class="status" id="status">Išsaugota</span>
-    <button class="btn" id="previewBtn" type="button">Peržiūra</button>
-    <button class="btn" id="downloadBtn" type="button">Atsisiųsti content.js</button>
-    <button class="btn primary" id="saveBtn" type="button">Išsaugoti į GitHub</button>
+    <h1>Content manager</h1>
+    <span class="status" id="status">Saved</span>
+    <button class="btn" id="previewBtn" type="button">Preview</button>
+    <button class="btn" id="downloadBtn" type="button">Download content.js</button>
+    <button class="btn primary" id="saveBtn" type="button">Save to GitHub</button>
   </div>
 </div>
 
 <div class="layout">
   <nav class="side">
     <a href="#p-github">GitHub</a>
-    <a href="#p-site">Pagrindinis</a>
-    <a href="#p-prep">Pasiruošimas</a>
-    <a href="#p-sizes">Dydžiai</a>
-    <a href="#p-vars">Kintamieji</a>
-    <a href="#p-steps">Instrukcija</a>
-    <a href="#p-products">Prekės</a>
-    <a href="#p-kit">Rinkinys</a>
+    <a href="#p-site">General</a>
+    <a href="#p-prep">Before you start</a>
+    <a href="#p-sizes">Sizes</a>
+    <a href="#p-vars">Variables</a>
+    <a href="#p-steps">Pattern</a>
+    <a href="#p-products">Supplies</a>
+    <a href="#p-kit">Starter kit</a>
   </nav>
   <div>
     <div id="messages"></div>
@@ -173,7 +173,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
         state = d;
         dirty = true;
         setTimeout(function(){
-          message("info", "Įkeltas neišsaugotas juodraštis iš šios naršyklės. ", "Atmesti juodraštį", function(){
+          message("info", "Loaded an unsaved draft from this browser. ", "Discard draft", function(){
             state = clone(published);
             lsDel(DRAFT_KEY);
             setDirty(false);
@@ -185,7 +185,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
     } catch(e) {}
   }
 
-  var gh = { owner:"j3ws3r", repo:"projektas", branch:"main", path:"content.js", message:"Atnaujintas puslapio turinys" };
+  var gh = { owner:"j3ws3r", repo:"projektas", branch:"main", path:"content.js", message:"Update page content" };
   try { Object.assign(gh, JSON.parse(lsGet(GH_KEY) || "{}")); } catch(e) {}
   var token = ssGet(TOKEN_KEY) || "";
 
@@ -204,7 +204,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
   function setDirty(v){
     dirty = v;
     var s = document.getElementById("status");
-    s.textContent = v ? "Yra neišsaugotų pakeitimų" : "Išsaugota";
+    s.textContent = v ? "Unsaved changes" : "Saved";
     s.classList.toggle("dirty", v);
   }
   function changed(){
@@ -257,13 +257,13 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
       inp.addEventListener("input", function(){ arr[i] = inp.value; changed(); });
       wrap.appendChild(el("div", {class:"strrow"}, [
         inp,
-        el("button", {class:"btn small", type:"button", title:"Aukštyn", text:"↑", onclick:function(){ move(arr, i, -1); }}),
-        el("button", {class:"btn small", type:"button", title:"Žemyn", text:"↓", onclick:function(){ move(arr, i, 1); }}),
-        el("button", {class:"btn small danger", type:"button", text:"Šalinti", onclick:function(){ arr.splice(i, 1); changed(); renderAll(); }})
+        el("button", {class:"btn small", type:"button", title:"Move up", text:"↑", onclick:function(){ move(arr, i, -1); }}),
+        el("button", {class:"btn small", type:"button", title:"Move down", text:"↓", onclick:function(){ move(arr, i, 1); }}),
+        el("button", {class:"btn small danger", type:"button", text:"Remove", onclick:function(){ arr.splice(i, 1); changed(); renderAll(); }})
       ]));
     });
     wrap.appendChild(el("div", {class:"row-actions"}, [
-      el("button", {class:"btn small", type:"button", text:addLabel || "+ Pridėti", onclick:function(){ arr.push(""); changed(); renderAll(); }})
+      el("button", {class:"btn small", type:"button", text:addLabel || "+ Add", onclick:function(){ arr.push(""); changed(); renderAll(); }})
     ]));
     return wrap;
   }
@@ -281,7 +281,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
     arr.forEach(function(item, i){
       var key = id + ":" + i;
       var isOpen = !!openItems[key];
-      var titleEl = el("span", {class:"t", text: titleOf(item) || "(be pavadinimo)"});
+      var titleEl = el("span", {class:"t", text: titleOf(item) || "(untitled)"});
       var box = el("div", {class:"item" + (isOpen ? "" : " closed")});
       var head = el("div", {class:"head", onclick:function(e){
         if (e.target.closest("button")) return;
@@ -290,17 +290,17 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
       }}, [
         el("span", {class:"n", text:String(i + 1)}),
         titleEl,
-        el("button", {class:"btn small", type:"button", title:"Aukštyn", text:"↑", onclick:function(){ swapOpen(id, i, i - 1); move(arr, i, -1); }}),
-        el("button", {class:"btn small", type:"button", title:"Žemyn", text:"↓", onclick:function(){ swapOpen(id, i, i + 1); move(arr, i, 1); }}),
-        el("button", {class:"btn small danger", type:"button", text:"Šalinti", onclick:function(){
-          if (!confirm("Pašalinti „" + (titleOf(item) || "elementą") + "“?")) return;
+        el("button", {class:"btn small", type:"button", title:"Move up", text:"↑", onclick:function(){ swapOpen(id, i, i - 1); move(arr, i, -1); }}),
+        el("button", {class:"btn small", type:"button", title:"Move down", text:"↓", onclick:function(){ swapOpen(id, i, i + 1); move(arr, i, 1); }}),
+        el("button", {class:"btn small danger", type:"button", text:"Remove", onclick:function(){
+          if (!confirm("Remove \"" + (titleOf(item) || "this item") + "\"?")) return;
           arr.splice(i, 1);
           shiftOpen(id, i);
           changed();
           renderAll();
         }})
       ]);
-      var body = el("div", {class:"body"}, [bodyOf(item, function(){ titleEl.textContent = titleOf(item) || "(be pavadinimo)"; })]);
+      var body = el("div", {class:"body"}, [bodyOf(item, function(){ titleEl.textContent = titleOf(item) || "(untitled)"; })]);
       box.appendChild(head);
       box.appendChild(body);
       wrap.appendChild(box);
@@ -349,37 +349,37 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
     var msgInp = el("input", {type:"text"});
     msgInp.value = gh.message;
     msgInp.addEventListener("input", function(){ gh.message = msgInp.value; lsSet(GH_KEY, JSON.stringify(gh)); });
-    return panel("p-github", "GitHub", "Pakeitimai išsaugomi kaip commit'as į content.js failą repozitorijoje. Prieigos raktas laikomas tik šiame naršyklės skirtuke ir niekur kitur nesiunčiamas.", [
-      el("div", {class:"cols3"}, [ghField("Savininkas", "owner"), ghField("Repozitorija", "repo"), ghField("Šaka", "branch")]),
-      el("div", {class:"cols"}, [ghField("Failo kelias", "path"), el("div", {class:"f"}, [el("label", {text:"Commit žinutė"}), msgInp])]),
-      el("div", {class:"f"}, [el("label", {text:"Prieigos raktas (fine-grained token su Contents: Read and write teise šiai repozitorijai)"}), tok]),
-      el("div", {class:"row-actions"}, [el("button", {class:"btn", type:"button", text:"Įkelti naujausią turinį iš GitHub", onclick:loadFromGitHub})])
+    return panel("p-github", "GitHub", "Changes are saved as a commit to content.js in the repository. Your access token is kept only in this browser tab and is never sent anywhere else.", [
+      el("div", {class:"cols3"}, [ghField("Owner", "owner"), ghField("Repository", "repo"), ghField("Branch", "branch")]),
+      el("div", {class:"cols"}, [ghField("File path", "path"), el("div", {class:"f"}, [el("label", {text:"Commit message"}), msgInp])]),
+      el("div", {class:"f"}, [el("label", {text:"Access token (fine-grained token with Contents: Read and write for this repository)"}), tok]),
+      el("div", {class:"row-actions"}, [el("button", {class:"btn", type:"button", text:"Load latest content from GitHub", onclick:loadFromGitHub})])
     ]);
   }
 
   function sitePanel(){
     var s = state.site = state.site || {};
     s.facts = s.facts || [];
-    return panel("p-site", "Pagrindinis", "Puslapio viršus ir apačia.", [
-      el("div", {class:"cols"}, [field("Naršyklės lango pavadinimas", s, "pageTitle"), el("div", {class:"cols"}, [field("Logotipas", s, "brand"), field("Logotipo paryškinta dalis", s, "brandAccent")])]),
-      field("Antraštė", s, "heroTitle"),
-      field("Įžanga", s, "heroText", {multiline:true}),
-      stringList("Žymos po įžanga", s.facts, "+ Pridėti žymą"),
-      field("Poraštė", s, "footer")
+    return panel("p-site", "General", "The top and bottom of the page.", [
+      el("div", {class:"cols"}, [field("Browser tab title", s, "pageTitle"), el("div", {class:"cols"}, [field("Logo", s, "brand"), field("Logo highlighted part", s, "brandAccent")])]),
+      field("Headline", s, "heroTitle"),
+      field("Intro", s, "heroText", {multiline:true}),
+      stringList("Tags under the intro", s.facts, "+ Add tag"),
+      field("Footer", s, "footer")
     ]);
   }
 
   function prepPanel(){
     var p = state.prep = state.prep || {};
     p.abbreviations = p.abbreviations || [];
-    return panel("p-prep", "Pasiruošimas", null, [
-      field("Skyriaus pavadinimas", p, "title"),
-      field("Įžanga", p, "lead", {multiline:true}),
-      el("div", {class:"cols"}, [field("Tankio kortelės antraštė", p, "gaugeTitle"), field("Sutrumpinimų kortelės antraštė", p, "abbrTitle")]),
-      field("Tankio aprašymas", p, "gaugeText", {multiline:true}),
-      el("div", {class:"f"}, [el("label", {text:"Sutrumpinimai"}), listEditor("abbr", p.abbreviations, function(a){ return a.term + (a.text ? ": " + a.text : ""); }, function(a, refresh){
-        return el("div", {class:"cols"}, [field("Sutrumpinimas", a, "term", {onInput:refresh}), field("Reikšmė", a, "text", {onInput:refresh})]);
-      }, function(){ return {term:"", text:""}; }, "+ Pridėti sutrumpinimą")])
+    return panel("p-prep", "Before you start", null, [
+      field("Section title", p, "title"),
+      field("Intro", p, "lead", {multiline:true}),
+      el("div", {class:"cols"}, [field("Gauge card title", p, "gaugeTitle"), field("Abbreviations card title", p, "abbrTitle")]),
+      field("Gauge text", p, "gaugeText", {multiline:true}),
+      el("div", {class:"f"}, [el("label", {text:"Abbreviations"}), listEditor("abbr", p.abbreviations, function(a){ return a.term + (a.text ? ": " + a.text : ""); }, function(a, refresh){
+        return el("div", {class:"cols"}, [field("Abbreviation", a, "term", {onInput:refresh}), field("Meaning", a, "text", {onInput:refresh})]);
+      }, function(){ return {term:"", text:""}; }, "+ Add abbreviation")])
     ]);
   }
 
@@ -400,18 +400,18 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
   function sizesPanel(){
     state.sizes = state.sizes || [];
     var opts = state.sizes.map(function(s){ return [s.id, s.id]; });
-    return panel("p-sizes", "Dydžiai", "Kiekvienas dydis tampa mygtuku instrukcijoje ir eilute dydžių lentelėje. Akių skaičius lentelėje imamas iš kintamojo {n}.", [
-      opts.length ? field("Numatytasis dydis", state, "defaultSize", {options:opts}) : null,
+    return panel("p-sizes", "Sizes", "Each size becomes a button in the pattern and a row in the size table. The stitch count in the table comes from the {n} variable.", [
+      opts.length ? field("Default size", state, "defaultSize", {options:opts}) : null,
       listEditor("sizes", state.sizes, function(s){ return s.id + (s.age ? " · " + s.age : ""); }, function(s, refresh){
         var prev = s.id;
         return el("div", {}, [
           el("div", {class:"cols"}, [
-            field("Žymėjimas (pvz. M)", s, "id", {onInput:refresh, onChange:function(v){ var old = prev; prev = v; renameSize(old, v); }}),
-            field("Amžius", s, "age", {onInput:refresh})
+            field("Label (e.g. M)", s, "id", {onInput:refresh, onChange:function(v){ var old = prev; prev = v; renameSize(old, v); }}),
+            field("Age", s, "age", {onInput:refresh})
           ]),
-          el("div", {class:"cols"}, [field("Pėdos ilgis", s, "foot"), field("Siūlų kiekis", s, "yarn")])
+          el("div", {class:"cols"}, [field("Foot length", s, "foot"), field("Yarn needed", s, "yarn")])
         ]);
-      }, function(){ return {id:"XL", age:"", foot:"", yarn:""}; }, "+ Pridėti dydį")
+      }, function(){ return {id:"XL", age:"", foot:"", yarn:""}; }, "+ Add size")
     ]);
   }
 
@@ -419,7 +419,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
     state.variables = state.variables || [];
     var sizes = state.sizes || [];
     var table = el("table", {class:"vartable"});
-    var headRow = el("tr", {}, [el("th", {text:"Raktas"}), el("th", {text:"Pavadinimas"})].concat(sizes.map(function(s){ return el("th", {text:s.id}); })).concat([el("th")]));
+    var headRow = el("tr", {}, [el("th", {text:"Key"}), el("th", {text:"Name"})].concat(sizes.map(function(s){ return el("th", {text:s.id}); })).concat([el("th")]));
     table.appendChild(el("thead", {}, [headRow]));
     var tb = el("tbody");
     state.variables.forEach(function(v, i){
@@ -430,14 +430,14 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
         inp.addEventListener("input", function(){ obj[key] = key === "key" ? inp.value.replace(/[^\w]/g, "") : inp.value; if (key === "key" && inp.value !== obj[key]) inp.value = obj[key]; changed(); });
         return el("td", {}, [inp]);
       }
-      tb.appendChild(el("tr", {}, [cell(v, "key", "raktas"), cell(v, "label")].concat(sizes.map(function(s){ return cell(v.values, s.id); })).concat([
-        el("td", {}, [el("button", {class:"btn small danger", type:"button", text:"Šalinti", onclick:function(){ state.variables.splice(i, 1); changed(); renderAll(); }})])
+      tb.appendChild(el("tr", {}, [cell(v, "key", "key"), cell(v, "label")].concat(sizes.map(function(s){ return cell(v.values, s.id); })).concat([
+        el("td", {}, [el("button", {class:"btn small danger", type:"button", text:"Remove", onclick:function(){ state.variables.splice(i, 1); changed(); renderAll(); }})])
       ])));
     });
     table.appendChild(tb);
-    return panel("p-vars", "Kintamieji", "Instrukcijos tekste rašykite {raktas}, pavyzdžiui {n}, ir puslapyje bus įrašyta pasirinkto dydžio reikšmė. Raktas gali turėti tik raides, skaičius ir pabraukimą.", [
+    return panel("p-vars", "Variables", "Write {key} in the pattern text, for example {n}, and the page will show the value for the selected size. Keys can only contain letters, numbers and underscores.", [
       el("div", {class:"tablewrap"}, [table]),
-      el("div", {class:"row-actions"}, [el("button", {class:"btn small", type:"button", text:"+ Pridėti kintamąjį", onclick:function(){ state.variables.push({key:"", label:"", values:{}}); changed(); renderAll(); }})])
+      el("div", {class:"row-actions"}, [el("button", {class:"btn small", type:"button", text:"+ Add variable", onclick:function(){ state.variables.push({key:"", label:"", values:{}}); changed(); renderAll(); }})])
     ]);
   }
 
@@ -445,50 +445,50 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
     var ins = state.instructions = state.instructions || {};
     ins.steps = ins.steps || [];
     var keys = (state.variables || []).map(function(v){ return v.key; }).filter(Boolean);
-    return panel("p-steps", "Instrukcija", null, [
-      field("Skyriaus pavadinimas", ins, "title"),
-      field("Įžanga", ins, "lead", {multiline:true}),
-      el("div", {class:"f"}, [el("label", {text:"Žingsniai"}), listEditor("steps", ins.steps, function(s){ return s.title; }, function(step, refresh){
+    return panel("p-steps", "Pattern", null, [
+      field("Section title", ins, "title"),
+      field("Intro", ins, "lead", {multiline:true}),
+      el("div", {class:"f"}, [el("label", {text:"Steps"}), listEditor("steps", ins.steps, function(s){ return s.title; }, function(step, refresh){
         step.blocks = step.blocks || [];
-        var chips = el("div", {class:"chips"}, keys.map(function(k){ return el("code", {text:"{" + k + "}", title:"Kopijuoti", onclick:function(){ try { navigator.clipboard.writeText("{" + k + "}"); } catch(e) {} }}); }));
+        var chips = el("div", {class:"chips"}, keys.map(function(k){ return el("code", {text:"{" + k + "}", title:"Copy", onclick:function(){ try { navigator.clipboard.writeText("{" + k + "}"); } catch(e) {} }}); }));
         return el("div", {}, [
-          field("Žingsnio pavadinimas", step, "title", {onInput:refresh}),
-          keys.length ? el("div", {class:"f"}, [el("label", {text:"Galimi kintamieji (spustelėkite, kad nukopijuotumėte)"}), chips]) : null,
-          el("div", {class:"f"}, [el("label", {text:"Turinys"}), listEditor("steps:" + ins.steps.indexOf(step) + ":b", step.blocks, function(b){ return (b.type === "row" ? "Eilutė: " : "Tekstas: ") + (b.text || "").slice(0, 70); }, function(b, refresh2){
+          field("Step title", step, "title", {onInput:refresh}),
+          keys.length ? el("div", {class:"f"}, [el("label", {text:"Available variables (click to copy)"}), chips]) : null,
+          el("div", {class:"f"}, [el("label", {text:"Content"}), listEditor("steps:" + ins.steps.indexOf(step) + ":b", step.blocks, function(b){ return (b.type === "row" ? "Row: " : "Text: ") + (b.text || "").slice(0, 70); }, function(b, refresh2){
             return el("div", {}, [
-              field("Tipas", b, "type", {options:[["p","Pastraipa"],["row","Nėrimo eilutė"]], onInput:refresh2}),
-              field("Tekstas", b, "text", {multiline:true, onInput:refresh2})
+              field("Type", b, "type", {options:[["p","Paragraph"],["row","Crochet row"]], onInput:refresh2}),
+              field("Text", b, "text", {multiline:true, onInput:refresh2})
             ]);
-          }, function(){ return {type:"p", text:""}; }, "+ Pridėti bloką")])
+          }, function(){ return {type:"p", text:""}; }, "+ Add block")])
         ]);
-      }, function(){ return {title:"Naujas žingsnis", blocks:[{type:"p", text:""}]}; }, "+ Pridėti žingsnį")]),
-      el("div", {class:"cols"}, [field("Patarimo antraštė", ins, "tipTitle"), field("Patarimo tekstas", ins, "tipText", {multiline:true})])
+      }, function(){ return {title:"New step", blocks:[{type:"p", text:""}]}; }, "+ Add step")]),
+      el("div", {class:"cols"}, [field("Tip title", ins, "tipTitle"), field("Tip text", ins, "tipText", {multiline:true})])
     ]);
   }
 
   function productsPanel(){
     var ps = state.productsSection = state.productsSection || {};
     state.products = state.products || [];
-    return panel("p-products", "Prekės", "Kaina ir nuoroda neprivalomos. Nuoroda turi prasidėti https://.", [
-      field("Skyriaus pavadinimas", ps, "title"),
-      field("Įžanga", ps, "lead", {multiline:true}),
-      listEditor("products", state.products, function(p){ return p.name + (p.tag === "must" ? " · būtina" : ""); }, function(p, refresh){
+    return panel("p-products", "Supplies", "Price and link are optional. The link must start with https://.", [
+      field("Section title", ps, "title"),
+      field("Intro", ps, "lead", {multiline:true}),
+      listEditor("products", state.products, function(p){ return p.name + (p.tag === "must" ? " · essential" : ""); }, function(p, refresh){
         return el("div", {}, [
-          el("div", {class:"cols"}, [field("Pavadinimas", p, "name", {onInput:refresh}), field("Žyma", p, "tag", {options:[["must","Būtina"],["nice","Patogu"]], onInput:refresh})]),
-          field("Aprašymas", p, "description", {multiline:true}),
-          el("div", {class:"cols3"}, [field("Savybės", p, "spec"), field("Kaina", p, "price", {placeholder:"pvz. 6,90 €"}), field("Nuoroda į prekę", p, "url", {type:"url", placeholder:"https://"})])
+          el("div", {class:"cols"}, [field("Name", p, "name", {onInput:refresh}), field("Label", p, "tag", {options:[["must","Essential"],["nice","Nice to have"]], onInput:refresh})]),
+          field("Description", p, "description", {multiline:true}),
+          el("div", {class:"cols3"}, [field("Details", p, "spec"), field("Price", p, "price", {placeholder:"e.g. €6.90"}), field("Product link", p, "url", {type:"url", placeholder:"https://"})])
         ]);
-      }, function(){ return {tag:"nice", name:"", description:"", spec:"", price:"", url:""}; }, "+ Pridėti prekę")
+      }, function(){ return {tag:"nice", name:"", description:"", spec:"", price:"", url:""}; }, "+ Add product")
     ]);
   }
 
   function kitPanel(){
     var k = state.kit = state.kit || {};
     k.items = k.items || [];
-    return panel("p-kit", "Rinkinys", "Tamsus blokas prekių skyriaus apačioje.", [
-      field("Pavadinimas", k, "title"),
-      field("Aprašymas", k, "text", {multiline:true}),
-      stringList("Sudėtis", k.items, "+ Pridėti eilutę")
+    return panel("p-kit", "Starter kit", "The dark box at the bottom of the supplies section.", [
+      field("Title", k, "title"),
+      field("Description", k, "text", {multiline:true}),
+      stringList("Contents", k.items, "+ Add line")
     ]);
   }
 
@@ -517,14 +517,14 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
   function validate(){
     var errs = [];
     var ids = (state.sizes || []).map(function(s){ return (s.id || "").trim(); });
-    if (!ids.length) errs.push("Turi būti bent vienas dydis.");
-    if (ids.some(function(i){ return !i; })) errs.push("Kiekvienas dydis turi turėti žymėjimą.");
-    if (new Set(ids).size !== ids.length) errs.push("Dydžių žymėjimai kartojasi.");
+    if (!ids.length) errs.push("There must be at least one size.");
+    if (ids.some(function(i){ return !i; })) errs.push("Every size needs a label.");
+    if (new Set(ids).size !== ids.length) errs.push("Size labels must be unique.");
     var keys = (state.variables || []).map(function(v){ return v.key; });
-    if (keys.some(function(k){ return !k; })) errs.push("Kiekvienas kintamasis turi turėti raktą.");
-    if (new Set(keys).size !== keys.length) errs.push("Kintamųjų raktai kartojasi.");
+    if (keys.some(function(k){ return !k; })) errs.push("Every variable needs a key.");
+    if (new Set(keys).size !== keys.length) errs.push("Variable keys must be unique.");
     (state.products || []).forEach(function(p){
-      if (p.url && !/^https?:\/\//i.test(p.url)) errs.push("Prekės „" + p.name + "“ nuoroda turi prasidėti https://.");
+      if (p.url && !/^https?:\/\//i.test(p.url)) errs.push("The link for \"" + p.name + "\" must start with https://.");
     });
     return errs;
   }
@@ -536,11 +536,11 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
     return { "Authorization":"Bearer " + token, "Accept":"application/vnd.github+json", "X-GitHub-Api-Version":"2022-11-28" };
   }
   function explain(res, body){
-    if (res.status === 401) return "GitHub nepriėmė prieigos rakto. Patikrinkite, ar jis teisingas ir nepasibaigęs.";
-    if (res.status === 403) return "Prieigos raktas neturi teisės rašyti į šią repozitoriją.";
-    if (res.status === 404) return "Repozitorija, šaka ar failas nerasti. Patikrinkite GitHub nustatymus.";
-    if (res.status === 409) return "Failas ką tik buvo pakeistas kitur. Įkelkite naujausią turinį ir bandykite dar kartą.";
-    return "GitHub klaida " + res.status + (body && body.message ? ": " + body.message : "");
+    if (res.status === 401) return "GitHub rejected the access token. Check that it is correct and hasn't expired.";
+    if (res.status === 403) return "The access token doesn't have permission to write to this repository.";
+    if (res.status === 404) return "Repository, branch or file not found. Check the GitHub settings.";
+    if (res.status === 409) return "The file was just changed somewhere else. Load the latest content and try again.";
+    return "GitHub error " + res.status + (body && body.message ? ": " + body.message : "");
   }
   function getRemote(){
     return fetch(apiUrl() + "?ref=" + encodeURIComponent(gh.branch), {headers:headers(), cache:"no-store"}).then(function(res){
@@ -552,15 +552,15 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
   }
 
   function loadFromGitHub(){
-    if (!token) return message("err", "Įveskite prieigos raktą.");
-    if (dirty && !confirm("Neišsaugoti pakeitimai bus pakeisti turiniu iš GitHub. Tęsti?")) return;
+    if (!token) return message("err", "Enter an access token.");
+    if (dirty && !confirm("Your unsaved changes will be replaced with the content from GitHub. Continue?")) return;
     getRemote().then(function(body){
       state = parseContent(fromB64(body.content));
       published = clone(state);
       lsDel(DRAFT_KEY);
       setDirty(false);
       renderAll();
-      message("ok", "Turinys įkeltas iš GitHub.");
+      message("ok", "Content loaded from GitHub.");
     }).catch(function(e){ message("err", e.message); });
   }
 
@@ -569,16 +569,16 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
     if (errs.length) return message("err", errs.join(" "));
     if (!token) {
       document.getElementById("p-github").scrollIntoView({behavior:"smooth"});
-      return message("err", "Įveskite GitHub prieigos raktą skiltyje GitHub.");
+      return message("err", "Enter a GitHub access token in the GitHub section.");
     }
     var btn = document.getElementById("saveBtn");
     btn.disabled = true;
-    btn.textContent = "Saugoma...";
+    btn.textContent = "Saving...";
     getRemote().catch(function(e){
-      if (/nerasti/.test(e.message)) return {};
+      if (/not found/.test(e.message)) return {};
       throw e;
     }).then(function(remote){
-      var payload = { message: gh.message || "Atnaujintas puslapio turinys", content: toB64(serialize()), branch: gh.branch };
+      var payload = { message: gh.message || "Update page content", content: toB64(serialize()), branch: gh.branch };
       if (remote.sha) payload.sha = remote.sha;
       return fetch(apiUrl(), {method:"PUT", headers:Object.assign({"Content-Type":"application/json"}, headers()), body:JSON.stringify(payload)}).then(function(res){
         return res.json().catch(function(){ return {}; }).then(function(body){
@@ -591,12 +591,12 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
       lsDel(DRAFT_KEY);
       setDirty(false);
       var url = body.commit && body.commit.html_url;
-      message("ok", "Išsaugota. Svetainėje pakeitimai pasirodys, kai ji bus perkurta iš repozitorijos (dažniausiai per minutę). ", url ? "Atidaryti commit'ą" : null, url ? function(){ window.open(url, "_blank", "noopener"); } : null);
+      message("ok", "Saved. The changes will appear on the site once it is rebuilt from the repository (usually within a minute). ", url ? "Open commit" : null, url ? function(){ window.open(url, "_blank", "noopener"); } : null);
     }).catch(function(e){
       message("err", e.message);
     }).then(function(){
       btn.disabled = false;
-      btn.textContent = "Išsaugoti į GitHub";
+      btn.textContent = "Save to GitHub";
     });
   }
 
@@ -616,7 +616,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-
     if (dirty) { e.preventDefault(); e.returnValue = ""; }
   });
 
-  if (!published) message("err", "Nepavyko įkelti content.js. Įveskite GitHub duomenis ir spauskite „Įkelti naujausią turinį iš GitHub“.");
+  if (!published) message("err", "content.js could not be loaded. Fill in the GitHub details and click \"Load latest content from GitHub\".");
   setDirty(dirty);
   renderAll();
 })();

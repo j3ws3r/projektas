@@ -1,101 +1,101 @@
 window.SITE_CONTENT = {
   "site": {
-    "pageTitle": "Vaikiškos kojinės",
-    "brand": "Mažos",
-    "brandAccent": "kojinės",
-    "heroTitle": "Šiltos kojinės vaikui, nertos vąšeliu",
-    "heroText": "Kojinės neriamos ratu nuo pirštų galo iki riešo trumpaisiais stulpeliais, o kulnas įneriamas pabaigoje. Pasirinkite vaiko dydį ir visi akių skaičiai instrukcijoje persiskaičiuos automatiškai.",
-    "facts": ["Lygis: pradedančiajam", "Vąšelis 3 mm", "Kojinių siūlai 4 klostių", "Trys dydžiai: 1–10 metų"],
-    "footer": "Puslapis sukurtas su Claude."
+    "pageTitle": "Kids' Crochet Socks",
+    "brand": "Little",
+    "brandAccent": "socks",
+    "heroTitle": "Warm crochet socks for your child",
+    "heroText": "These socks are worked in the round from the toe up to the cuff in single crochet, and the heel is added at the end. Pick your child's size and every stitch count in the pattern updates automatically.",
+    "facts": ["Level: beginner", "3 mm hook", "Fingering weight sock yarn", "Three sizes: ages 1–10"],
+    "footer": "This page was made with Claude."
   },
   "prep": {
-    "title": "Pasiruošimas",
-    "lead": "Prieš pradėdami išsirinkite dydį pagal vaiko pėdos ilgį. Jį išmatuokite nuo kulno iki ilgiausio piršto galo, vaikui stovint.",
-    "gaugeTitle": "Nėrimo tankis",
-    "gaugeText": "Apie 25 trumpieji stulpeliai ir 28 eilės = 10 × 10 cm. Nunerkite bandomąjį gabalėlį: jei akių daugiau, imkite storesnį vąšelį, jei mažiau, plonesnį. Kojinė turi tempiantis gerai priglusti prie kojos.",
-    "abbrTitle": "Sutrumpinimai",
+    "title": "Before you start",
+    "lead": "Choose a size based on your child's foot length. Measure from the back of the heel to the tip of the longest toe while your child is standing.",
+    "gaugeTitle": "Gauge",
+    "gaugeText": "About 25 single crochet stitches and 28 rows = 10 × 10 cm (4 × 4 in). Crochet a test swatch first: if you have more stitches, go up a hook size, and if you have fewer, go down. The sock should fit snugly when stretched over the foot.",
+    "abbrTitle": "Abbreviations",
     "abbreviations": [
-      {"term": "oa", "text": "oro akis"},
-      {"term": "ja", "text": "jungiamoji akis"},
-      {"term": "sb", "text": "stulpelis be apnėrimo (trumpasis stulpelis)"},
-      {"term": "ssa", "text": "stulpelis su apnėrimu"},
-      {"term": "2sb į vieną", "text": "du stulpeliai į tą pačią akį (pridėjimas)"},
-      {"term": "2sb kartu", "text": "du stulpeliai sujungti į vieną (sumažinimas)"},
-      {"term": "rsp / rsu", "text": "reljefinis stulpelis iš priekio / iš užpakalio"}
+      {"term": "ch", "text": "chain"},
+      {"term": "sl st", "text": "slip stitch"},
+      {"term": "sc", "text": "single crochet"},
+      {"term": "dc", "text": "double crochet"},
+      {"term": "inc", "text": "2 sc in the same stitch (increase)"},
+      {"term": "sc2tog", "text": "single crochet two together (decrease)"},
+      {"term": "FPdc / BPdc", "text": "front post / back post double crochet"}
     ]
   },
   "defaultSize": "M",
   "sizes": [
-    {"id": "S", "age": "1–3 m.", "foot": "12–14 cm", "yarn": "apie 50 g"},
-    {"id": "M", "age": "4–6 m.", "foot": "15–17 cm", "yarn": "60–70 g"},
-    {"id": "L", "age": "7–10 m.", "foot": "18–20 cm", "yarn": "80–100 g"}
+    {"id": "S", "age": "ages 1–3", "foot": "12–14 cm", "yarn": "about 50 g"},
+    {"id": "M", "age": "ages 4–6", "foot": "15–17 cm", "yarn": "60–70 g"},
+    {"id": "L", "age": "ages 7–10", "foot": "18–20 cm", "yarn": "80–100 g"}
   ],
   "variables": [
-    {"key": "n", "label": "Akių rate", "values": {"S": "30", "M": "36", "L": "42"}},
-    {"key": "toeRounds", "label": "Pirštų dalies ratų", "values": {"S": "5", "M": "6", "L": "7"}},
-    {"key": "heelSpace", "label": "Vieta kulnui", "values": {"S": "4 cm", "M": "4,5 cm", "L": "5 cm"}},
-    {"key": "half", "label": "Pusė akių", "values": {"S": "15", "M": "18", "L": "21"}},
-    {"key": "leg", "label": "Blauzdos ilgis", "values": {"S": "4 cm", "M": "5 cm", "L": "6 cm"}},
-    {"key": "cuff", "label": "Riešo ratų", "values": {"S": "4", "M": "5", "L": "6"}},
-    {"key": "decStart", "label": "Kulno mažinimo pradžia", "values": {"S": "3", "M": "4", "L": "5"}}
+    {"key": "n", "label": "Stitches per round", "values": {"S": "30", "M": "36", "L": "42"}},
+    {"key": "toeRounds", "label": "Toe rounds", "values": {"S": "5", "M": "6", "L": "7"}},
+    {"key": "heelSpace", "label": "Space for heel", "values": {"S": "4 cm", "M": "4.5 cm", "L": "5 cm"}},
+    {"key": "half", "label": "Half the stitches", "values": {"S": "15", "M": "18", "L": "21"}},
+    {"key": "leg", "label": "Leg length", "values": {"S": "4 cm", "M": "5 cm", "L": "6 cm"}},
+    {"key": "cuff", "label": "Cuff rounds", "values": {"S": "4", "M": "5", "L": "6"}},
+    {"key": "decStart", "label": "First heel decrease spacing", "values": {"S": "3", "M": "4", "L": "5"}}
   ],
   "instructions": {
-    "title": "Nėrimo instrukcija",
-    "lead": "Pėda ir blauzda neriamos spirale, nejungiant ratų. Rato pradžią pažymėkite žymekliu ir kiekviename rate jį perkelkite aukštyn.",
+    "title": "Pattern",
+    "lead": "The foot and leg are worked in a continuous spiral without joining rounds. Mark the first stitch of each round with a stitch marker and move it up as you go.",
     "steps": [
-      {"title": "Pirštų dalis", "blocks": [
-        {"type": "row", "text": "1 ratas: į magišką žiedą nunerkite 6 sb, žiedą sutraukite (6)"},
-        {"type": "row", "text": "2 ratas: 2sb į vieną kiekvieną akį (12)"},
-        {"type": "row", "text": "3 ratas: *1 sb, 2sb į vieną* kartokite (18)"},
-        {"type": "row", "text": "4 ratas: *2 sb, 2sb į vieną* kartokite (24)"},
-        {"type": "p", "text": "Toliau kiekviename rate tarp pridėjimų nerkite vienu sb daugiau, kol rate bus {n} akių. Tam reikės {toeRounds} ratų."}
+      {"title": "Toe", "blocks": [
+        {"type": "row", "text": "Round 1: 6 sc into a magic ring, pull the ring closed (6)"},
+        {"type": "row", "text": "Round 2: inc in every stitch (12)"},
+        {"type": "row", "text": "Round 3: *1 sc, inc* repeat around (18)"},
+        {"type": "row", "text": "Round 4: *2 sc, inc* repeat around (24)"},
+        {"type": "p", "text": "Keep going, working one more sc between increases each round, until you have {n} stitches. This takes {toeRounds} rounds."}
       ]},
-      {"title": "Pėda", "blocks": [
-        {"type": "p", "text": "Nerkite po 1 sb į kiekvieną akį, kol kojinės ilgis nuo pirštų galo bus {heelSpace} trumpesnis už vaiko pėdos ilgį. Likutis skirtas kulnui."}
+      {"title": "Foot", "blocks": [
+        {"type": "p", "text": "Work 1 sc in each stitch until the sock measures {heelSpace} less than your child's foot length from the tip of the toe. The rest is left for the heel."}
       ]},
-      {"title": "Anga kulnui", "blocks": [
-        {"type": "p", "text": "Nunerkite {half} sb (tai pėdos viršus). Tada nunerkite {half} oa, praleiskite {half} akis ir tęskite ratą."},
-        {"type": "p", "text": "Kitame rate į kiekvieną oro akį nunerkite po 1 sb. Rate vėl bus {n} akių."}
+      {"title": "Heel opening", "blocks": [
+        {"type": "p", "text": "Work {half} sc (this is the top of the foot). Then ch {half}, skip {half} stitches and continue the round."},
+        {"type": "p", "text": "On the next round work 1 sc into each chain. You are back to {n} stitches."}
       ]},
-      {"title": "Blauzda", "blocks": [
-        {"type": "p", "text": "Nerkite sb spirale {leg}. Ilgį galite keisti pagal norą."}
+      {"title": "Leg", "blocks": [
+        {"type": "p", "text": "Work sc in a spiral for {leg}. You can make it longer or shorter as you like."}
       ]},
-      {"title": "Riešas", "blocks": [
-        {"type": "p", "text": "Toliau ratus jungsite ja. Pirmas rato stulpelis keičiamas 2 oa."},
-        {"type": "row", "text": "1 ratas: 2 oa, ssa į kiekvieną akį, ja į rato pradžią"},
-        {"type": "row", "text": "Kiti ratai: 2 oa, *1 rsp, 1 rsu* kartokite, ja"},
-        {"type": "p", "text": "Nunerkite {cuff} reljefinių ratų. Taip gausite elastingą gumą, kuri laikys kojinę ant kojos. Siūlą nukirpkite ir įsiūkite."}
+      {"title": "Cuff", "blocks": [
+        {"type": "p", "text": "From here on, join each round with a sl st. Ch 2 counts as the first stitch of the round."},
+        {"type": "row", "text": "Round 1: ch 2, dc in each stitch, sl st to the top of the ch 2"},
+        {"type": "row", "text": "Following rounds: ch 2, *1 FPdc, 1 BPdc* repeat around, sl st to join"},
+        {"type": "p", "text": "Work {cuff} rounds of ribbing. This gives a stretchy cuff that keeps the sock in place. Fasten off and weave in the end."}
       ]},
-      {"title": "Kulnas", "blocks": [
-        {"type": "p", "text": "Prisekite siūlą angos kampe ir nerkite sb ratu aplink visą angą: po 1 sb į kiekvieną akį ir po 1 sb į kiekvieną kampą. Antrame rate kampuose nunerkite 2sb kartu, kad rate vėl būtų {n} akių."},
-        {"type": "row", "text": "Mažinimo ratai: *{decStart} sb, 2sb kartu* kartokite, kitame rate tarp sumažinimų nerkite vienu sb mažiau"},
-        {"type": "p", "text": "Mažinkite, kol liks 12 akių."}
+      {"title": "Heel", "blocks": [
+        {"type": "p", "text": "Join the yarn at a corner of the opening and work sc in the round all the way around it: 1 sc in each stitch and 1 sc in each corner. On the second round, sc2tog at the corners so you are back to {n} stitches."},
+        {"type": "row", "text": "Decrease rounds: *{decStart} sc, sc2tog* repeat around, working one fewer sc between decreases each round"},
+        {"type": "p", "text": "Decrease until 12 stitches remain."}
       ]},
-      {"title": "Užbaigimas", "blocks": [
-        {"type": "p", "text": "Nukirpkite siūlą palikę 20 cm galą. Įverkite jį į buką adatą, perverkite per visas 12 likusių akių priekines kilpas ir sutraukite. Kulno kampuose likusias skylutes užsiūkite tuo pačiu siūlu. Įsiūkite galus ir nunerkite antrą kojinę."}
+      {"title": "Finishing", "blocks": [
+        {"type": "p", "text": "Cut the yarn leaving a 20 cm tail. Thread it onto a tapestry needle, pass it through the front loops of the 12 remaining stitches and pull tight. Close any small gaps at the heel corners with the same tail. Weave in the ends and make the second sock."}
       ]}
     ],
-    "tipTitle": "Patarimas.",
-    "tipText": "Sb audinys tankus ir tvirtas, todėl vąšeliu nertos kojinės ilgai nesidėvi. Jas patogiausia nešioti namuose ar batuose su laisvesne nosimi. Pasirinkite siūlus su poliamido priedu, jie atlaikys skalbimą ir lakstymą."
+    "tipTitle": "Tip.",
+    "tipText": "Single crochet makes a dense, sturdy fabric, so crocheted socks hold up well. They are most comfortable around the house or in shoes with a roomy toe box. Choose a yarn with some nylon in it so the socks survive washing and running around."
   },
   "productsSection": {
-    "title": "Rekomenduojamos prekės",
-    "lead": "Viskas, ko reikia pirmai porai. Pažymėtos būtinos prekės, kitos palengvina darbą."
+    "title": "Recommended supplies",
+    "lead": "Everything you need for your first pair. Essentials are marked, the rest just make the job easier."
   },
   "products": [
-    {"tag": "must", "name": "Kojinių siūlai", "description": "75 % merino vilna ir 25 % poliamidas. Minkšti, šilti ir atsparūs dilimui. Vaikams tinka plaunami skalbimo mašinoje.", "spec": "4 klostės · 50 g ≈ 210 m", "price": "", "url": ""},
-    {"tag": "must", "name": "Nėrimo vąšelis", "description": "Su minkšta ergonomine rankena: ilgiau neriant nepavargsta ranka. Metalinė galvutė lengvai slysta per vilną.", "spec": "3 mm", "price": "", "url": ""},
-    {"tag": "must", "name": "Akių žymekliai", "description": "Neriant spirale be jų sunku rasti rato pradžią. Atsegami žymekliai lengvai perkeliami aukštyn.", "spec": "Atsegami, 10 vnt.", "price": "", "url": ""},
-    {"tag": "must", "name": "Buka adata siūlams", "description": "Kojinės galui sutraukti ir siūlų galams įsiūti. Bukas galas neperskelia siūlo.", "spec": "Didelė akutė", "price": "", "url": ""},
-    {"tag": "nice", "name": "Vąšelių rinkinys", "description": "Praverčia, kai reikia pakoreguoti tankį ar nerti storesniais siūlais.", "spec": "2,5–4 mm", "price": "", "url": ""},
-    {"tag": "nice", "name": "Eilių skaitiklis", "description": "Padeda suskaičiuoti pirštų ir kulno ratus, kad abi kojinės būtų vienodos.", "spec": "Su spaudžiamu mygtuku", "price": "", "url": ""},
-    {"tag": "nice", "name": "Matavimo juostelė", "description": "Pėdos ilgiui ir nėrimo tankiui pamatuoti.", "spec": "150 cm, minkšta", "price": "", "url": ""},
-    {"tag": "nice", "name": "Kojinių formos", "description": "Išskalbtos kojinės ant jų išdžiūsta lygios ir gražios formos.", "spec": "Vaikiški dydžiai", "price": "", "url": ""},
-    {"tag": "nice", "name": "Projektų krepšelis", "description": "Kad kamuolys neriedėtų po stalu ir vąšelis nepasimestų.", "spec": "Su kišenėle įrankiams", "price": "", "url": ""}
+    {"tag": "must", "name": "Sock yarn", "description": "75% merino wool and 25% nylon. Soft, warm and hard-wearing. For kids, choose a machine-washable yarn.", "spec": "Fingering weight · 50 g ≈ 210 m", "price": "", "url": ""},
+    {"tag": "must", "name": "Crochet hook", "description": "With a soft ergonomic handle so your hand doesn't tire on longer sessions. A metal head glides easily through wool.", "spec": "3 mm", "price": "", "url": ""},
+    {"tag": "must", "name": "Stitch markers", "description": "Without them it's hard to find the start of the round when working in a spiral. Locking markers are easy to move up.", "spec": "Locking, pack of 10", "price": "", "url": ""},
+    {"tag": "must", "name": "Tapestry needle", "description": "For closing the toe and weaving in ends. The blunt tip won't split the yarn.", "spec": "Large eye", "price": "", "url": ""},
+    {"tag": "nice", "name": "Crochet hook set", "description": "Handy when you need to adjust your gauge or work with thicker yarn.", "spec": "2.5–4 mm", "price": "", "url": ""},
+    {"tag": "nice", "name": "Row counter", "description": "Helps you count toe and heel rounds so both socks come out the same.", "spec": "Click counter", "price": "", "url": ""},
+    {"tag": "nice", "name": "Measuring tape", "description": "For measuring foot length and checking your gauge.", "spec": "150 cm, soft", "price": "", "url": ""},
+    {"tag": "nice", "name": "Sock blockers", "description": "Dry washed socks on them so they keep a smooth, even shape.", "spec": "Kids' sizes", "price": "", "url": ""},
+    {"tag": "nice", "name": "Project bag", "description": "Keeps the ball of yarn from rolling under the table and your hook from going missing.", "spec": "With a pocket for tools", "price": "", "url": ""}
   ],
   "kit": {
-    "title": "Pradedančiojo rinkinys",
-    "text": "Viskas vienai porai M dydžio kojinių vienoje dėžutėje.",
-    "items": ["2 sruogos kojinių siūlų (po 50 g)", "Vąšelis 3 mm su ergonomine rankena", "Buka adata ir 4 žymekliai", "Atspausdinta šio puslapio instrukcija"]
+    "title": "Starter kit",
+    "text": "Everything for one pair of size M socks in a single box.",
+    "items": ["2 skeins of sock yarn (50 g each)", "3 mm hook with an ergonomic handle", "Tapestry needle and 4 stitch markers", "A printed copy of this pattern"]
   }
 };

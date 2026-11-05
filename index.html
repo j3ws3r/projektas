@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="lt">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vaikiškos kojinės</title>
-<meta name="description" content="Kaip nerti kojines vaikams vąšeliu: instrukcija pagal dydį ir rekomenduojamos prekės.">
+<title>Kids' Crochet Socks</title>
+<meta name="description" content="How to crochet socks for kids: a pattern for three sizes and recommended supplies.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -179,7 +179,7 @@ footer{padding:36px 0 48px;color:var(--muted);font-size:14px}
 </head>
 <body>
 
-<div class="preview-banner" id="previewBanner" hidden>Juodraščio peržiūra. Lankytojai šių pakeitimų dar nemato.</div>
+<div class="preview-banner" id="previewBanner" hidden>Draft preview. Visitors can't see these changes yet.</div>
 
 <header class="top">
   <div class="wrap">
@@ -207,7 +207,7 @@ footer{padding:36px 0 48px;color:var(--muted);font-size:14px}
       <div class="tablebox">
         <table>
           <thead>
-            <tr><th>Dydis</th><th>Amžius</th><th>Pėdos ilgis</th><th id="sizeVarHead">Akių rate</th><th>Siūlų kiekis</th></tr>
+            <tr><th>Size</th><th>Age</th><th>Foot length</th><th id="sizeVarHead">Stitches per round</th><th>Yarn needed</th></tr>
           </thead>
           <tbody id="sizeTable"></tbody>
         </table>
@@ -229,7 +229,7 @@ footer{padding:36px 0 48px;color:var(--muted);font-size:14px}
     <div class="wrap">
       <h2 id="instrTitle"></h2>
       <p class="lead" id="instrLead"></p>
-      <div class="sizebar" role="group" aria-label="Dydis" id="sizebar"><strong>Dydis:</strong></div>
+      <div class="sizebar" role="group" aria-label="Size" id="sizebar"><strong>Size:</strong></div>
       <ol class="steps" id="steps"></ol>
       <div class="tip"><strong id="tipTitle"></strong> <span id="tipText"></span></div>
     </div>
@@ -270,7 +270,7 @@ footer{padding:36px 0 48px;color:var(--muted);font-size:14px}
     } catch(e) {}
   }
   if (!data) {
-    document.querySelector("main").innerHTML = '<div class="wrap hero"><p>Nepavyko įkelti turinio.</p></div>';
+    document.querySelector("main").innerHTML = '<div class="wrap hero"><p>The page content could not be loaded.</p></div>';
     return;
   }
 
@@ -376,8 +376,8 @@ footer{padding:36px 0 48px;color:var(--muted);font-size:14px}
     var footer = '<div class="spec">' + esc(p.spec);
     if (p.price) footer += '<span class="price">' + esc(p.price) + "</span>";
     footer += "</div>";
-    var link = url ? '<a class="buy" href="' + esc(url) + '" target="_blank" rel="noopener">Žiūrėti prekę</a>' : "";
-    return '<article class="product"><span class="tag' + (must ? " must" : "") + '">' + (must ? "Būtina" : "Patogu") + "</span>" +
+    var link = url ? '<a class="buy" href="' + esc(url) + '" target="_blank" rel="noopener">View product</a>' : "";
+    return '<article class="product"><span class="tag' + (must ? " must" : "") + '">' + (must ? "Essential" : "Nice to have") + "</span>" +
       "<h3>" + esc(p.name) + "</h3><p>" + esc(p.description) + "</p>" + footer + link + "</article>";
   }).join("");
 
